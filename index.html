@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine?</title>
+<style>
+    body {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        text-align: center;
+        background-color: #ffe6eb;
+        margin-top: 100px;
+        overflow: hidden;
+    }
+    h1 {
+        color: #d6336c;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 10px;
+        position: absolute;
+    }
+    #yesBtn {
+        background-color: #ff4d6d;
+        color: white;
+        left: 40%;
+        top: 50%;
+    }
+    #noBtn {
+        background-color: #ccc;
+        left: 55%;
+        top: 50%;
+    }
+</style>
+</head>
+<body>
+<img src="teddy-bear.jpg" alt="Image">
+<h1>💖 Bikash, Will You Be My Valentine? 💖</h1>
+<button id="yesBtn">Yes 💕</button>
+<button id="noBtn">No</button>
+<script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+document.addEventListener('mousemove', (e) => {
+        const rect = noBtn.getBoundingClientRect();
+        const distance = Math.hypot(
+            e.clientX - (rect.left + rect.width / 2),
+            e.clientY - (rect.top + rect.height / 2)
+        );
+// If cursor is within 100px, move the button
+        if (distance < 100) {
+            let newX = Math.random() * (window.innerWidth - rect.width);
+            let newY = Math.random() * (window.innerHeight - rect.height);
+            noBtn.style.left = `${newX}px`;
+            noBtn.style.top = `${newY}px`;
+        }
+    });
+yesBtn.addEventListener('click', () => {
+        document.body.innerHTML = "<h1>Yay! 💖 You made my day! 💖</h1>
+<img src="Bikash.jpg" alt="Valentine Image">"
+            ;
+    });
+</script>
+</body>
+</html>
